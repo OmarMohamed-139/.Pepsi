@@ -24,7 +24,7 @@ body {
     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
 }
 
-/* الدائرة المتحركة في المنتصف */
+/* الدائرة المتحركة في المنتصف مع تأثير النبض (Pulse Animation) قبل الـ Hover */
 .product-card .circle {
     position: absolute;
     top: 50%;
@@ -40,6 +40,26 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    animation: pulseCircle 2s infinite ease-in-out;
+    /* تشغيل تأثير النبض المستمر */
+}
+
+/* تصميم حركة النبض (التكبير والتصغير البسيط مع توهج متغير) */
+@keyframes pulseCircle {
+    0% {
+        transform: translate(-50%, -50%) scale(0.95);
+        box-shadow: 0 0 30px #004b93, 0 0 60px #0066cc;
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.03);
+        box-shadow: 0 0 60px #004b93, 0 0 120px #0066cc;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(0.95);
+        box-shadow: 0 0 30px #004b93, 0 0 60px #0066cc;
+    }
 }
 
 /* شعار البداية داخل الدائرة */
@@ -52,7 +72,7 @@ body {
     opacity: 1;
 }
 
-/* تأثير الـ Hover: تكبير الدائرة لملء البطاقة */
+/* عند الـ Hover: إلغاء النبض وتكبير الدائرة لملء البطاقة بالكامل */
 .product-card:hover .circle {
     width: 100%;
     height: 100%;
@@ -61,6 +81,8 @@ body {
     left: 0;
     transform: none;
     box-shadow: none;
+    animation: none;
+    /* إيقاف النبض عند فتح البطاقة */
 }
 
 /* إخفاء الشعار عند الـ Hover */
@@ -70,11 +92,10 @@ body {
     transition-delay: 0s;
 }
 
-/* محتوى النص (مرفوع للأعلى بشكل أكبر ومنسق) */
+/* محتوى النص والأزرار */
 .product-card .content {
     position: absolute;
     top: -50px;
-    /* رفعنا النص مسافة إضافية للأعلى */
     left: 0;
     width: 100%;
     height: 100%;
@@ -110,7 +131,6 @@ body {
     line-height: 1.5;
     margin-bottom: 15px;
     max-width: 260px;
-    /* تحديد عرض النص لكي لا يمتد كثيراً */
 }
 
 .product-card .content .btn {
@@ -132,7 +152,7 @@ body {
     color: #fff;
 }
 
-/* علبة البيبسي مع الإمالة وحركة الظهور المطابقة للفيديو */
+/* علبة البيبسي وإمالتها */
 .product-card .product-img {
     position: absolute;
     bottom: -100px;
@@ -150,6 +170,5 @@ body {
     bottom: 15px;
     right: 20px;
     transform: scale(1.05) rotate(15deg);
-    /* الإمالة المطلوبة للكن */
     transition-delay: 0.3s;
 }
