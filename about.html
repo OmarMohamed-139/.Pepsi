@@ -71,6 +71,81 @@
             </div>
         </section>
 
+        <!-- قسم عارض النكهات التفاعلي -->
+        <section class="section flavor-showcase">
+            <div class="section-content">
+                <h2>Explore Our Flavors</h2>
+                <p>Discover the unique taste profile crafted for every mood. Click a flavor below to experience the
+                    difference.</p>
+
+                <!-- أزرار اختيار النكهات (ربطنا كل زر بـ data-flavor عشان JavaScript يتعرف عليه بسهولة) -->
+                <div class="flavor-tabs">
+                    <button class="tab-btn active" data-flavor="classic">Pepsi Classic</button>
+                    <button class="tab-btn" data-flavor="zero">Pepsi Zero Sugar</button>
+                    <button class="tab-btn" data-flavor="fanta">Fanta Orange</button>
+                </div>
+
+                <!-- تفاصيل النكهة النشطة -->
+                <div class="flavor-info">
+                    <h3 id="flavorTitle">Pepsi Classic</h3>
+                    <p id="flavorDesc">The bold, refreshing, robust cola taste you’ve known and loved for decades.
+                        Perfect for any moment.</p>
+                </div>
+            </div>
+
+            <!-- صورة العلبة التفاعلية -->
+            <div class="section-image flavor-img-container">
+                <!-- حط اسم صورة البيبسي العادية هنا افتراضياً -->
+                <img id="flavorImg" src="pngwing.com.png" alt="Pepsi Flavor">
+            </div>
+        </section>
+
+        <!-- كود جافاسكريبت سلس ومنظم جداً -->
+        <script>
+            // قاعدة بيانات صغيرة للنكهات (Title, Description, Image)
+            // حط أسماء الصور بتاعتك هنا بكل سهولة من غير أي مشاكل
+            const flavorData = {
+                classic: {
+                    title: "Pepsi Classic",
+                    desc: "The bold, refreshing, robust cola taste you’ve known and loved for decades. Perfect for any moment.",
+                    image: "pngwing.com.png" // اسم صورة البيبسي العادية
+                },
+                zero: {
+                    title: "Pepsi Zero Sugar",
+                    desc: "Max taste, zero sugar! Enjoy the ultimate bold Pepsi experience with absolutely no calories.",
+                    image: "diet.png" // اسم صورة البيبسي الزيرو أو البديلة
+                },
+                fanta: {
+                    title: "Mirnda Orange",
+                    desc: "100% natural flavors, caffeine free, and packed with a vibrant, refreshing orange taste that brightens your day.",
+                    image: "mrinda.png" // اسم صورة فانتا اللي فيها مسافة
+                }
+            };
+
+            // ربط الأزرار بالوظيفة
+            const buttons = document.querySelectorAll('.tab-btn');
+            const titleEl = document.getElementById('flavorTitle');
+            const descEl = document.getElementById('flavorDesc');
+            const imgEl = document.getElementById('flavorImg');
+
+            buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // إزالة الـ active من كل الأزرار ووضعها على الزر المضغوط
+                    buttons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+
+                    // جلب نوع النكهة من الـ data attribute
+                    const flavorKey = button.getAttribute('data-flavor');
+                    const data = flavorData[flavorKey];
+
+                    // تحديث المحتوى بسلاسة
+                    titleEl.innerText = data.title;
+                    descEl.innerText = data.desc;
+                    imgEl.src = data.image;
+                });
+            });
+        </script>
+
     </main>
 
 
