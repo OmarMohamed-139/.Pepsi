@@ -171,10 +171,13 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .section, .section.reverse {
+
+    .section,
+    .section.reverse {
         flex-direction: column;
     }
 }
+
 /* تأثير الوميض بلون أزرق بيبسي */
 .pepsi-glow {
     color: #0066cc;
@@ -187,8 +190,125 @@ footer {
         opacity: 0.4;
         text-shadow: 0 0 2px rgba(0, 102, 204, 0.3);
     }
+
     100% {
         opacity: 1;
         text-shadow: 0 0 15px rgba(0, 102, 204, 0.9), 0 0 25px rgba(0, 75, 147, 0.6);
+    }
+}
+
+/* --- تنسيق قسم النكهات التفاعلي --- */
+.flavor-showcase {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    background: linear-gradient(135deg, #111827, #0b1329);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(0, 102, 204, 0.2);
+    margin: 40px 0;
+}
+
+/* تنسيق محتوى النصوص داخل القسم */
+.flavor-showcase .section-content {
+    flex: 1;
+}
+
+.flavor-showcase h2 {
+    color: #fff;
+    font-size: 26px;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.flavor-showcase>.section-content>p {
+    color: #9ca3af;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+/* أزرار التبويب (Tabs) */
+.flavor-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    background: #1f2937;
+    color: #9ca3af;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tab-btn:hover {
+    color: #fff;
+    border-color: #0066cc;
+    background: rgba(0, 102, 204, 0.1);
+}
+
+.tab-btn.active {
+    background: #004b93;
+    color: #fff;
+    border-color: #0066cc;
+    box-shadow: 0 4px 15px rgba(0, 75, 147, 0.4);
+}
+
+/* صندوق معلومات النكهة النشطة */
+.flavor-info h3 {
+    color: #60a5fa;
+    font-size: 20px;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.flavor-info p {
+    color: #d1d5db;
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* حاوية وعرض الصورة مع تأثير انتقالي ناعم */
+.flavor-img-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+}
+
+.flavor-img-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.6));
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+/* التجاوب مع الشاشات الصغيرة (Mobile Responsive) */
+@media (max-width: 768px) {
+    .flavor-showcase {
+        flex-direction: column;
+        text-align: center;
+        padding: 25px;
+    }
+
+    .flavor-tabs {
+        justify-content: center;
+    }
+
+    .flavor-img-container {
+        height: 220px;
+        margin-top: 20px;
     }
 }
